@@ -1,10 +1,17 @@
 import React, {useState} from 'react';
+import Image from 'next/image'
 import emailjs from '@emailjs/browser';
 const publicKey= "nJCnCKwLrwuEhtQn6";
 const Guest = () => {
 
   const [guest, setGuest] = useState({name:'', email: '', adult:1, kids:1, msg:''});
   const [validated, setValidated] = useState(false);
+  const [copy, setCopy] = useState(false)
+  const copyText = (e:any) => {
+    console.log(e.target.innerText)
+    navigator.clipboard.writeText('1318 W 32nd St, Chicago, IL')
+    setCopy(!copy);
+  }
   const handleChange = (e:any) => {
     let tag = e.target.name;
     let value = e.target.value;
@@ -162,6 +169,14 @@ const Guest = () => {
             </div>
           </div>
 
+        </div>
+        <p className="mt-5">Address</p>
+        <div
+          onClick={copyText}
+          className="cursor-pointer w-full py-2 text-left flex items-center ml-36 text-s text-thin text-gray-600">
+
+           <Image src="/location.png" alt="location" width={20} height={20} className="mr-4"/>
+          <p>{copy ? "copied" : "1318 W 32nd St, Chicago"}</p>
         </div>
         <button type="submit" className="mt-6 py-2 px-10 text-white shadow-sm rounded-full bg-indigo-400 hover:bg-indigo-300">Submit</button>
       </div>
