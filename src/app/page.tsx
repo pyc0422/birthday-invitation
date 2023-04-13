@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image'
 import Guest from './Guest';
-import olivia from './IMG_6717.PNG';
+import olivia from '../../public/IMG_6717.PNG';
 import Schedule from './Schedule';
 import {Shantell_Sans } from 'next/font/google';
 import { motion } from 'framer-motion';
