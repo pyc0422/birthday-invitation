@@ -26,7 +26,7 @@ export default function Home() {
         </nav>
         </header>
       <div id="home" className={`${sans.className} min-h-screen min-w-full`}>
-        <div className="mt-20  ">
+        <div className="mt-20">
         <motion.div initial={{opacity:'0%', x:'-200'}} animate={{opacity:'100%', x:0}} transition={{duration:1}}>
           <h1 className='text-5xl mb-3 text-pink-400'> You are invited!</h1>
         </motion.div>
@@ -35,22 +35,12 @@ export default function Home() {
         </motion.div>
 
         <motion.div initial={{opacity:'0%', y:400}}animate={{opacity: '100%', y:0}} transition={{delay:0.5, duration:1}}>
-
-            <Image src="/olivia.png" alt="picture of olivia" width={500} height={500} className="float-right -mt-8 mr-[10%]"/>
-
-            {/* <div className="flex items-center justify-center">
-             <div className="w-10 h-20">
-              <Image src="/location.png" alt="location" width={20} height={20}/>
-             </div>
-             <div onClick={copyText} className="text-xs text-thin text-gray-600">
-              1318 W 32nd St, Chicago
-             </div>
-            </div> */}
+            <Image src="/olivia.png" alt="picture of olivia" width={500} height={500} className="float-right -mt-8 mr-[5%] md:mr-[30%] "/>
           </motion.div>
         </div>
 
       </div>
-      <div id="join" className="min-h-full mt-20 pt-24">
+      <div id="join" className="min-h-screen mt-20 pt-24">
         <Guest />
       </div>
       <div id="schedule" className="min-h-[90vh] pt-14">
