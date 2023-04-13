@@ -2,7 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-input[type='number']::-webkit-inner-spin-button,
+img:hover {
+ animation-name:toggle;
+ animation-duration:2s;
+}
+@keyframes toggle {
+  0%,100% { transform:'rotate(-3deg)';}
+  50% {transform:'rotate(3deg)';}
+}
+/* input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
@@ -19,7 +27,7 @@ input[type='number']::-webkit-outer-spin-button {
   img{
     margin-right:auto
   }
-}
+} */
 /* :root {
   --foreground-rgb: 255，255，255;
   --background-start-rgb: 0,0,0;
