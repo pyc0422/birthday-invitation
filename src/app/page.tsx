@@ -1,7 +1,6 @@
 "use client";
 import Image from 'next/image'
 import Guest from './Guest';
-import olivia from '../../public/IMG_6717.PNG';
 import Schedule from './Schedule';
 import {Shantell_Sans } from 'next/font/google';
 import { motion } from 'framer-motion';
@@ -36,7 +35,7 @@ export default function Home() {
         </motion.div>
         <motion.div initial={{opacity:'0%', y:400}}animate={{opacity: '100%', y:0}} transition={{delay:0.5, duration:1}}>
 
-        <Image src={olivia} alt="picture of olivia" width={500} className="animate-swpie-left float-right -mt-8 mr-[10%]"/>
+        <Image src="/olivia.png" alt="picture of olivia" width={500} height={500} className="animate-swpie-left float-right -mt-8 mr-[10%]"/>
         </motion.div>
         </div>
       </div>
