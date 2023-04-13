@@ -25,7 +25,7 @@ const Guest = () => {
     }
   }, [copy])
 
-  const handleCount = (e:any, kind: string) => {
+  const handleCount = (e:any, kind: any) => {
     e.preventDefault();
     let btn = e.target.innerText;
     if (btn === '-') {
@@ -35,7 +35,7 @@ const Guest = () => {
     }
   }
   type Variables = {from_name: string, email: string, message: string}
-  const sendMessage = (serviceId:string, templateId:string, variables:any) => {
+  const sendMessage = (serviceId:string, templateId:string, variables: Variables) => {
     emailjs.send(serviceId, templateId, variables, publicKey)
     .then((res) => {
       console.log('send', res.text);
@@ -60,7 +60,7 @@ const Guest = () => {
       const templateId = "template_p7b8iej";
       const serviceId="service_pw9rij5";
       console.log('sended')
-      sendMessage(serviceId, templateId, { from_name: guest.name, email:guest.email, message:'adult: '+guest.adult+', kids: '+guest.kids+', '+guest.msg})
+      sendMessage(serviceId, templateId, { from_name: guest.name, email:guest.email, message:`adult: ${guest.adult}, kids: ${guest.kids}, Msg: ${guest.msg}`})
     }
 
   }
@@ -185,13 +185,12 @@ const Guest = () => {
           onClick={copyText}
           className="cursor-pointer w-full py-2 text-left flex items-center flex justify-center text-gray-600"
         >
-
            <Image src="/location.gif" alt="location" width={20} height={20} className="mr-4"/>
            <div className="group flex relative">
            <span className="font-normal hover:font-semibold">1318 W 32nd</span>
-            <span
-             className="group-hover:opacity-100 transition-opacity bg-gray-700 px-1 text-sm text-gray-100 rounded-md absolute
-    translate-x-5 translate-y-full  opacity-0">{copy? "Copied" : "Click to Copy"}</span>
+            <span className="group-hover:opacity-100 transition-opacity bg-gray-700 px-1 text-sm text-gray-100 rounded-md absolute translate-x-5 translate-y-full  opacity-0">
+              {copy? "Copied" : "Click to Copy"}
+            </span>
            </div>
 
         </div>
