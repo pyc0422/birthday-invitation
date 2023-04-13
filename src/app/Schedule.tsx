@@ -8,7 +8,7 @@ const timeline = [
   },
   {
     time: "5:00 - 6:00pm",
-    activity: "Photo shotting & Theme crafts"
+    activity: "Photo shoting & Theme crafts"
   },
   {
     time: "6:00 - 7:00pm",

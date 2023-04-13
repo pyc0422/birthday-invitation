@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Image from 'next/image'
 import emailjs from '@emailjs/browser';
 const publicKey= "nJCnCKwLrwuEhtQn6";
@@ -10,13 +10,20 @@ const Guest = () => {
   const copyText = (e:any) => {
     console.log(e.target.innerText)
     navigator.clipboard.writeText('1318 W 32nd St, Chicago, IL')
-    setCopy(!copy);
+    setCopy(true);
   }
   const handleChange = (e:any) => {
     let tag = e.target.name;
     let value = e.target.value;
     setGuest({...guest, [tag]: value})
   }
+  useEffect(() => {
+    if (copy) {
+      setTimeout(() => {
+        setCopy(false)
+      }, 2000)
+    }
+  }, [copy])
 
   const handleCount = (e:any, kind: string) => {
     e.preventDefault();
@@ -36,7 +43,7 @@ const Guest = () => {
       setGuest({name:'', email: '', adult:1, kids:1, msg:''})
       setTimeout(() => {
         setValidated(false);
-      },2000)
+      }, 3000)
     })
     .catch(err => console.error(err))
 
@@ -74,6 +81,7 @@ const Guest = () => {
               onChange={handleChange}
               value={guest.name}
               autoComplete="name"
+              placeholder={`Kid's Name`}
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
@@ -91,6 +99,7 @@ const Guest = () => {
                 onChange={handleChange}
                 type="email"
                 autoComplete="email"
+                placeholder='xxx@xxx.com'
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -164,6 +173,7 @@ const Guest = () => {
                 value={guest.msg}
                 onChange={handleChange}
                 autoComplete="message"
+                placeholder='Any allergy? or anything the host need to know'
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -173,10 +183,17 @@ const Guest = () => {
         <p className="mt-5">Address</p>
         <div
           onClick={copyText}
-          className="cursor-pointer w-full py-2 text-left flex items-center ml-36 text-s text-thin text-gray-600">
+          className="cursor-pointer w-full py-2 text-left flex items-center flex justify-center text-gray-600"
+        >
 
-           <Image src="/location.png" alt="location" width={20} height={20} className="mr-4"/>
-          <p>{copy ? "copied" : "1318 W 32nd St, Chicago"}</p>
+           <Image src="/location.gif" alt="location" width={20} height={20} className="mr-4"/>
+           <div className="group flex relative">
+           <span className="font-normal hover:font-semibold">1318 W 32nd</span>
+            <span
+             className="group-hover:opacity-100 transition-opacity bg-gray-700 px-1 text-sm text-gray-100 rounded-md absolute
+    translate-x-5 translate-y-full  opacity-0">{copy? "Copied" : "Click to Copy"}</span>
+           </div>
+
         </div>
         <button type="submit" className="mt-6 py-2 px-10 text-white shadow-sm rounded-full bg-indigo-400 hover:bg-indigo-300">Submit</button>
       </div>
